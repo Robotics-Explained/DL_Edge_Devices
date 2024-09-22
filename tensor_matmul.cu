@@ -1,11 +1,8 @@
 //////////////////////////////////////////////////////////////////////
 // A simple example to show how CUDA WMMA API works with Tensor Cores
-//    Created by Zong-Sheng Wang @ 2018/11/25
-// Performance Tips:
-//    To minimize bank conflicts, you should try to shift row or 
-// column of matrics in shared memory
+
 // cmd: 
-//    $ nvcc -o main main.cu -arch sm_75
+//    $ nvcc -arch=sm_86 -gencode arch=compute_86,code=sm_86 cuda_matmul.cu -o cuda_matmul
 
 #include <stdio.h>
 #include <stdlib.h>
