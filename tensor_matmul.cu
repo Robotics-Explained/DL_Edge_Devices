@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////////////////
 // A simple example to show how CUDA WMMA API works with Tensor Cores
 
-// cmd: 
-//    $ nvcc -arch=sm_86 -gencode arch=compute_86,code=sm_86 cuda_matmul.cu -o cuda_matmul
+// cmd: (For RTX 30 series GPUs)
+//    $ nvcc -arch=sm_86 -gencode arch=compute_86,code=sm_86 tensor_matmul.cu -o tensor_matmul
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -116,6 +116,7 @@ cudaError_t CalcWMMA(half *A, half *B, float *C, float *D)
 
 	// for Performance Metrics
 	printf("[+] GPU(with Tensor Cores) Elapsed Time: %f ms\n", milliseconds);
+
 	// references from https://devblogs.nvidia.com/how-implement-performance-metrics-cuda-cc/
 	printf("[+] TFLOPS: %.2f\n", ((double)M_TOTAL * N_TOTAL* K_TOTAL * 2) / milliseconds / 1e9);
 	cudaEventDestroy(start);
